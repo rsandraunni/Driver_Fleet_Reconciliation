@@ -1,8 +1,19 @@
 from datetime import date
 import enum
 
-from sqlalchemy import Date, Enum, Float, Integer, String, UniqueConstraint
-from sqlalchemy.orm import Mapped, mapped_column
+#from sqlalchemy import Date, Enum, Float, Integer, String, UniqueConstraint
+from sqlalchemy import (
+    Date,
+    Enum,
+    Float,
+    ForeignKey,
+    Integer,
+    String,
+    UniqueConstraint,
+)
+
+
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
 
@@ -17,11 +28,22 @@ class DailySummary(Base):
     __tablename__ = "daily_summaries"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-
+    '''
     driver_id: Mapped[str] = mapped_column(
         String(20),
         nullable=False
     )
+    '''
+    driver_id: Mapped[int] = mapped_column(
+        ForeignKey("drivers.id"),
+        nullable=False
+    )
+
+    driver = relationship("Driver")
+    
+
+
+
 
     summary_date: Mapped[date] = mapped_column(
         Date,
