@@ -110,4 +110,10 @@ def reconcile_shift(
         db.commit()
         return
 
+    #print("Shift reconciliation successful.")
+    summary.status = SummaryStatus.RESOLVED
+
+    db.commit()
+    db.refresh(summary)
+
     print("Shift reconciliation successful.")
