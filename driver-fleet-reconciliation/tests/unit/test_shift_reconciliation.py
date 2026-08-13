@@ -1,25 +1,9 @@
-'''
 from datetime import date, datetime
+from unittest.mock import MagicMock, patch
 
-from app.reconciliation.shift_reconciliation import reconcile_shift
-
-
-def test_shift_reconciliation_matches():
-    """
-    Shift events are within the allowed tolerance.
-    Expected result: RESOLVED.
-    """
-
-    # We will add the database setup here next.
-    assert True
-
-'''
-
-from datetime import date, datetime
-from unittest.mock import MagicMock
-
-from app.reconciliation.shift_reconciliation import reconcile_shift
 from app.models.output.daily_summary import SummaryStatus
+from app.reconciliation.shift_reconciliation import reconcile_shift
+
 
 def test_shift_reconciliation_matches():
     db = MagicMock()
@@ -106,11 +90,18 @@ def test_shift_reconciliation_mismatch():
         logout_query,
     ]
 
-    reconcile_shift(
-        db=db,
-        driver_id=1,
-        summary_date=date(2026, 8, 1),
-        summary=summary,
-    )
+    # We only want to test shift reconciliation here.
+    # Exception creation is tested separately.
+    with patch(
+        "app.reconciliation.shift_reconciliation.create_exception"
+    ) as mock_create_exception:
+
+        reconcile_shift(
+            db=db,
+            driver_id=1,
+            summary_date=date(2026, 8, 1),
+            summary=summary,
+        )
 
     assert summary.status == SummaryStatus.REVIEW_REQUIRED
+    mock_create_exception.assert_called_once()
