@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #6b7280;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.hidden {
+    display: none;
+}
+
+.status-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: #f3f4f6;
+}
+
+.status-box strong {
+    font-size: 18px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.result-grid div {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.result-grid span {
+    display: block;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.result-grid strong {
+    font-size: 18px;
+}
+
+.error {
+    color: #dc2626;
+    margin-top: 15px;
+}
+
+.exception {
+    border-left: 5px solid #dc2626;
+    background: #fef2f2;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+
+.exception .reason {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.exception .severity {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Driver Fleet Reconciliation</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Driver Fleet Reconciliation</h1>
+        <p>Daily reconciliation dashboard</p>
+    </header>
+
+    <section class="card">
+
+        <h2>Run Reconciliation</h2>
+
+        <div class="form-group">
+
+            <label for="driverId">
+                Driver ID
+            </label>
+
+            <input
+                type="number"
+                id="driverId"
+                placeholder="Enter driver ID"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="summaryDate">
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="summaryDate"
+            >
+
+        </div>
+
+        <button
+            id="reconcileBtn"
+            onclick="reconcile()"
+        >
+            Reconcile
+        </button>
+
+        <p
+            id="errorMessage"
+            class="error"
+        ></p>
+
+    </section>
+
+
+    <section
+        id="resultCard"
+        class="card hidden"
+    >
+
+        <h2>Reconciliation Result</h2>
+
+        <div class="status-box">
+
+            <span>Status</span>
+
+            <strong id="status">
+                -
+            </strong>
+
+        </div>
+
+        <div class="result-grid">
+
+            <div>
+                <span>Summary ID</span>
+                <strong id="summaryId">-</strong>
+            </div>
+
+            <div>
+                <span>Driver ID</span>
+                <strong id="resultDriverId">-</strong>
+            </div>
+
+            <div>
+                <span>Date</span>
+                <strong id="resultDate">-</strong>
+            </div>
+
+            <div>
+                <span>Hours on Duty</span>
+                <strong id="hoursOnDuty">-</strong>
+            </div>
+
+            <div>
+                <span>Trips Completed</span>
+                <strong id="tripsCompleted">-</strong>
+            </div>
+
+            <div>
+                <span>Distance</span>
+                <strong id="distanceKm">-</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section
+        id="exceptionCard"
+        class="card hidden"
+    >
+
+        <h2>Exceptions</h2>
+
+        <div id="exceptionList"></div>
+
+    </section>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
